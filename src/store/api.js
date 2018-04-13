@@ -26,3 +26,17 @@ export function searchByKeywords(type,q=0,start=0){
 export function fecthMovieDetailsByUrl(type){
   return fecthByUrl(`/movie/${type}`)
 }
+
+export function getActorData(that){
+  var casts = '';
+  var length = that.movieDetails.casts.length - 1;
+  that.movieDetails.casts.forEach(function(item,index){
+    if(index === length){
+      casts += item.name;
+    }else{
+      casts += item.name + ' / ';
+    }
+  })
+  that.actorData =  that.movieDetails.countries.join(' / ')+ ' / ' +that.movieDetails.genres.join(' / ')+ ' / ' +
+  that.movieDetails.directors[0].name + '(导演) / ' + casts;
+}

@@ -6,10 +6,10 @@
       </div>
       <div class="movieStyle">
         <ul class="movieListStyle">
-          <li class="movieCardStyle" v-for="(item,index) in movieList" :key="index">
+          <router-link class="movieCardStyle" v-for="(item,index) in movieList" :key="index" :to="{ path: '/details', query: { plan: item.alt }}">
             <img :src="item.images.large" alt="">
             <span>{{item.title}}</span>
-          </li>
+          </router-link>
         </ul>
       </div>
     </div>
